@@ -270,6 +270,41 @@ FROM v_stats_clean
 ORDER BY fouls_per90 DESC;
 
 -- ─────────────────────────────────────────────────────────────────
+-- 12. v_top5_performers
+--     Top 5 players by raw perf_score within each position group,
+--     plus the average market value of those 5 per position.
+--     All players included (with or without valuation).
+-- ─────────────────────────────────────────────────────────────────
+DROP VIEW IF EXISTS v_top5_performers;
+CREATE VIEW v_top5_performers AS
+SELECT
+    pos_group,
+    Player,
+    Squad,
+    Comp,
+    Age,
+    nineties,
+    perf_score,
+    perf_rank,
+    market_value_eur_M,
+    AVG(market_value_eur_M) OVER (PARTITION BY pos_group) AS avg_market_value_eur_M_top5
+FROM (
+    SELECT
+        pos_group,
+        Player,
+        Squad,
+        Comp,
+        Age,
+        nineties,
+        perf_score,
+        market_value_eur_M,
+        RANK() OVER (PARTITION BY pos_group ORDER BY perf_score DESC) AS perf_rank
+    FROM v_all_scored
+)
+WHERE perf_rank <= 5
+ORDER BY pos_group, perf_rank;
+
+-- ─────────────────────────────────────────────────────────────────
 -- Diagnostic queries (run manually to check match rate)
 -- ─────────────────────────────────────────────────────────────────
 
