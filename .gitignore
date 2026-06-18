@@ -1,0 +1,9 @@
+data/
+archive*/
+*.zip
+*.db
+*.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
