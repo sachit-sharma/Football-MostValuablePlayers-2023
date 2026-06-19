@@ -1,16 +1,16 @@
 league,pos_group,player_count,avg_perf_score,avg_value_score,avg_market_value_eur_M
-La Liga,DF,68,8.11,6.0182,11.13
-Ligue 1,DF,88,8.733,4.1345,9.17
-Serie A,DF,91,8.308,3.8833,10.17
+Ligue 1,DF,86,8.783,4.1988,8.6
+La Liga,DF,65,8.077,2.2628,11.63
 Bundesliga,DF,70,9.017,2.2091,12.93
-Premier League,DF,85,9.056,1.6614,20.74
-Bundesliga,FW,31,1.807,0.8522,17.72
-La Liga,FW,43,1.506,0.7242,18.22
-Premier League,FW,51,1.561,0.3256,34.18
+Serie A,DF,83,8.371,2.1424,10.69
+Premier League,DF,83,9.105,1.6101,21.18
+Bundesliga,FW,29,1.774,0.8995,17.97
+La Liga,FW,41,1.519,0.4947,19.1
 Ligue 1,FW,38,1.487,0.2486,18.15
-Serie A,FW,41,1.507,0.234,19.82
-Ligue 1,MF,70,12.23,4.145,10.73
-Premier League,MF,71,10.504,2.6999,31.98
-La Liga,MF,59,11.321,1.8735,16.7
+Serie A,FW,39,1.513,0.2266,20.22
+Premier League,FW,46,1.584,0.1418,36.26
+Ligue 1,MF,68,12.217,4.19,10.75
+Premier League,MF,66,10.37,1.8993,33.35
+La Liga,MF,57,11.387,1.8675,17.06
 Serie A,MF,48,10.174,1.7984,15.7
 Bundesliga,MF,47,9.021,1.6542,18.9

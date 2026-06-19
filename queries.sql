@@ -64,8 +64,34 @@ FROM (
 WHERE rn = 1;
 
 -- ─────────────────────────────────────────────────────────────────
--- 3. v_joined
---    Stats → players_bridge (name match) → season valuation
+-- 3. v_best_player_id
+--    For each FBref player name, pick the single best-matching
+--    player_id from players_bridge: the one whose closest valuation
+--    to 2023-05-31 is nearest. Resolves common-name ambiguity
+--    (e.g. "Danilo" matches 8 different player IDs in the bridge).
+-- ─────────────────────────────────────────────────────────────────
+DROP VIEW IF EXISTS v_best_player_id;
+CREATE VIEW v_best_player_id AS
+SELECT name, player_id
+FROM (
+    SELECT
+        pb.name,
+        pb.player_id,
+        MIN(ABS(julianday(pv.date) - julianday('2023-05-31'))) AS best_dist,
+        ROW_NUMBER() OVER (
+            PARTITION BY pb.name
+            ORDER BY MIN(ABS(julianday(pv.date) - julianday('2023-05-31')))
+        ) AS rn
+    FROM players_bridge pb
+    JOIN player_values pv ON pb.player_id = pv.player_id
+    WHERE pv.date BETWEEN '2022-07-01' AND '2023-06-30'
+    GROUP BY pb.name, pb.player_id
+)
+WHERE rn = 1;
+
+-- ─────────────────────────────────────────────────────────────────
+-- 4. v_joined
+--    Stats → v_best_player_id (one player_id per name) → valuation
 --    Unmatched players kept (NULL valuation) — report separately
 -- ─────────────────────────────────────────────────────────────────
 DROP VIEW IF EXISTS v_joined;
@@ -92,13 +118,13 @@ SELECT
     s.Fls,
     s.CrdY,
     s.CrdR,
-    pb.player_id,
+    bpi.player_id,
     vs.valuation_date,
     vs.market_value_in_eur,
     vs.market_value_eur_M
 FROM v_stats_clean s
-LEFT JOIN players_bridge pb ON LOWER(TRIM(s.Player)) = LOWER(TRIM(pb.name))
-LEFT JOIN v_valuations_season vs ON pb.player_id = vs.player_id;
+LEFT JOIN v_best_player_id bpi ON LOWER(TRIM(s.Player)) = LOWER(TRIM(bpi.name))
+LEFT JOIN v_valuations_season vs ON bpi.player_id = vs.player_id;
 
 -- ─────────────────────────────────────────────────────────────────
 -- 4. v_scored_fw  — Forwards
