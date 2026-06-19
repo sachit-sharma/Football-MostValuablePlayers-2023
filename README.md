@@ -2,7 +2,7 @@
 
 A data science project quantifying player performance relative to market value across the Premier League, La Liga, Bundesliga, Serie A, and Ligue 1.
 
-**[View the interactive Tableau dashboard →](#)** *(link to be added)*
+**[View the interactive Tableau dashboard →](https://public.tableau.com/app/profile/sachit.sharma6138/viz/DashboardBig5FootballLeagues/Dashboard1)**
 
 ---
 
