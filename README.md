@@ -2,6 +2,8 @@
 
 A data science project quantifying player performance relative to market value across the Premier League, La Liga, Bundesliga, Serie A, and Ligue 1.
 
+**[View the interactive Tableau dashboard →](#)** *(link to be added)*
+
 ---
 
 ## Project Question
@@ -35,10 +37,9 @@ Which players delivered the most output per euro of market value in the 2022-23 
 ├── notebooks/
 │   ├── analysis.ipynb            # Main analytical notebook
 │   └── *.png                     # Exported charts
-├── tableau_exports/              # CSVs for Tableau (generated — see below)
+├── tableau_exports/              # CSVs exported from SQLite views
 ├── queries.sql                   # All 12 SQLite view definitions
 ├── setup_db.py                   # Loads CSVs into football.db
-├── dashboard_spec.md             # Step-by-step Tableau build guide
 └── README.md
 ```
 
@@ -82,24 +83,6 @@ Or execute headlessly:
 ```bash
 jupyter nbconvert --to notebook --execute notebooks/analysis.ipynb --output notebooks/analysis.ipynb
 ```
-
-### 5. Export data for Tableau
-
-```python
-import sqlite3, pandas as pd, os
-
-os.makedirs("tableau_exports", exist_ok=True)
-conn = sqlite3.connect("data/football.db")
-
-for view in ["v_all_scored", "v_value_ranked", "v_top5_performers",
-             "v_league_summary", "v_age_band_summary", "v_aggression"]:
-    pd.read_sql(f"SELECT * FROM {view}", conn).to_csv(
-        f"tableau_exports/{view}.csv", index=False)
-
-conn.close()
-```
-
-Then follow `dashboard_spec.md` to connect and build in Tableau Desktop.
 
 ---
 
@@ -154,6 +137,6 @@ Players listed with combined positions (e.g. `MFFW`) are classified by their **p
 | matplotlib / seaborn | Charts |
 | SQLite (via sqlite3) | Multi-view data pipeline |
 | Jupyter | Interactive analysis |
-| Tableau Desktop | Interactive dashboard |
+| Tableau Public | Interactive dashboard |
 | FBref | Statistics source |
 | Transfermarkt / player-scores | Market valuations |
