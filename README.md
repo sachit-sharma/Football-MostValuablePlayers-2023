@@ -16,9 +16,8 @@ Which players delivered the most output per euro of market value in the 2022-23 
 
 | Source | File | Description |
 |---|---|---|
-| [FBref](https://fbref.com) | `data/player_stats.csv` | Season-level stats for all outfield players with ≥10 90s played. Exported via FBref's Big 5 combined stats table. |
-| [Transfermarkt via davidcariboo/player-scores](https://github.com/davidcariboo/player-scores) | `data/player_valuations.csv` | Time-series market valuations per player. |
-| [davidcariboo/player-scores](https://github.com/davidcariboo/player-scores) | `archive (3)/players.csv` | Player ID ↔ name bridge table used to join the two datasets. |
+| [2022-2023 Player Stats](https://www.kaggle.com/datasets/vivovinco/20222023-football-player-stats) | `data/player_stats.csv` | Season-level stats for all outfield players with ≥10 90s played. Exported via FBref's Big 5 combined stats table. |
+| [Transfermarkt Data](https://www.kaggle.com/datasets/davidcariboo/player-scores) | `data/player_valuations.csv` | Time-series market valuations per player. |
 
 **Valuation anchor:** The valuation closest to **2023-05-31** (end of season, just before the summer transfer window) within the 2022-07-01 – 2023-06-30 window. This reflects what a player was worth after the full season of measured statistics.
 
