@@ -131,11 +131,9 @@ Players listed with combined positions (e.g. `MFFW`) are classified by their **p
 
 | Tool | Use |
 |---|---|
-| Python 3.13 | Data processing, notebook execution |
+| Python | Data processing, notebook execution |
 | pandas / numpy | Data loading and computation |
-| matplotlib / seaborn | Charts |
+| matplotlib / seaborn | Visualizations |
 | SQLite (via sqlite3) | Multi-view data pipeline |
 | Jupyter | Interactive analysis |
 | Tableau Public | Interactive dashboard |
-| FBref | Statistics source |
-| Transfermarkt / player-scores | Market valuations |
