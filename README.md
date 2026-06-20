@@ -8,7 +8,7 @@ A data science project quantifying player performance relative to market value a
 
 ## Project Question
 
-Which players delivered the most output per euro of market value in the 2022-23 season — and how does that vary by position, league, and age?
+Which players delivered the most output per euro of market value in the 2022-23 season? How does that vary by position, league, and age?
 
 ---
 
