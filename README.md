@@ -1,4 +1,4 @@
-# Football Player Value Analysis — Big 5 European Leagues 2022-23
+# Football Player Value Analysis (Big 5 European Leagues 2022-23)
 
 A data science project quantifying player performance relative to market value across the Premier League, La Liga, Bundesliga, Serie A, and Ligue 1.
 
